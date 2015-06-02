@@ -12,9 +12,13 @@ this file and include it in basic-server.js so that it actually works.
 
 **************************************************************/
 
+// module.exports.handleRequest = requestHandler;
+
+
 var requestHandler = function(request, response) {
   // Request and Response come from node's http module.
-  //
+  
+  console.log("start");
   // They include information about both the incoming request, such as
   // headers and URL, and about the outgoing response, such as its status
   // and content.
@@ -39,11 +43,28 @@ var requestHandler = function(request, response) {
   //
   // You will need to change this if you are sending something
   // other than plain text, like JSON or HTML.
-  headers['Content-Type'] = "text/plain";
+  headers['Content-Type'] = "application/json";
 
+
+// it('should send back parsable stringified JSON', function(done) {
+//     request('http://127.0.0.1:3000/classes/messages', function(error, response, body) {
+//       expect(JSON.parse.bind(this, body)).to.not.throw();
+//       done();
+//     });
+
+// mokhtar: If anyone is having issues with listening to the ‘data’ event 
+// on request object, switch to node version 0.10.38
+
+ // data: JSON.stringify(data),
+  //contentType: 'application/json',
+  // console.log("response");
+  // console.log(response);
+  // console.log(request);
+  // headers['Data'] = "JSON.stringify(response)";   //
   // .writeHead() writes to the request line and headers of the response,
   // which includes the status and all headers.
   response.writeHead(statusCode, headers);
+  
 
   // Make sure to always call response.end() - Node may not send
   // anything back to the client until you do. The string you pass to
@@ -71,3 +92,4 @@ var defaultCorsHeaders = {
   "access-control-max-age": 10 // Seconds.
 };
 
+module.exports.handleRequest = requestHandler;

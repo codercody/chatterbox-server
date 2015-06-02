@@ -1,0 +1,228 @@
+html {
+    line-height: 1.5;
+    background-color: #FCFCFC;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+header {
+    font-family: Courier;
+    font-size: 1.2em;
+    text-decoration: none;
+    font-weight: 500;
+    color: black;
+    /*padding: 2px;*/
+    
+    margin-left: 150px;
+    position: relative;
+    display: inline-block;
+    text-align: left;
+    width: 760px;
+    border-bottom: 1px solid gray;
+}
+
+.corner {
+    width: 150px;
+    position: absolute;
+    float: left;
+    display: inline-block;
+}
+
+.buttondiv {
+    width: 150px;
+    margin-top: 50px;
+    position: absolute;
+}
+
+.settings {
+    display: block;
+    position: relative;
+    float: left;
+    margin-left: 20px;
+    width: 600px;
+}
+
+.lists {
+    margin-left: 20px;
+    margin-top: 130px;
+    height: 500px;
+    width: 114px;
+    position: absolute;
+    /*display: inline-block;*/
+    /*background-color: orange*/
+}
+
+.roomname {
+    font-size: 0.7em;
+    color: grey;
+    margin-left: 5px;
+}
+
+.roomlist {
+    font-family: Courier New;
+    margin-left: 5px;
+    margin-top: 5px;
+    height: 100px;
+    width: 114px;
+    /*position: absolute;*/
+}
+
+#main h1 span {
+    font-style: italic;
+}
+
+#main .error {
+    border: 1px solid red;
+    background: #FDEFF0;
+    /*padding: 20px;*/
+}
+
+#main .success {
+    margin-top: 25px;
+}
+
+#main .success code {
+    font-size: 12px;
+    color: green;
+    line-height: 13px;
+}
+
+.textarea {
+    display: inline;
+    position: relative;
+    width: 600px;
+    background: white;
+}
+
+#enterMessage {
+    height: 55px;
+}
+
+#enterName {
+    height: 20px;
+    font-size: 1em;
+}
+
+#enterRoom {
+    font-size: 1em;
+    height: 20px;
+}
+
+button {
+    font-family: Courier New;
+    color: #ffffff;
+    font-size: 1em;
+    padding: 9px 5px 5px 5px;
+    background: #e1e1e1;
+    text-decoration: none;
+    border: none;
+    margin: 5px 0px 0px 20px;
+    float: left;
+    /*display:block;*/
+    /*position: relative;*/
+}
+
+button:hover {
+    background: #85FF00;
+    text-decoration: none;
+}
+
+#trademark {
+    display: inline;
+    float: left;
+    font-size: 0.2em;
+    font-style: italic;
+    padding: 4px 12px 4px 12px;
+    background: white;
+    border: 1px solid black;
+    margin: 20px 20px 0px 25px;
+    /*position: relative;*/
+    /*box-shadow: -2px 2px gray;*/
+    /*color: #FF005E;*/
+}
+
+.feed {
+    font-family: Courier New;
+    font-weight: 100;
+    width: 850px;
+    margin-left: 145px;
+    margin-top: 140px;
+    text-align: left;
+    background: white;
+    position: absolute;
+    /*   border: solid #ddd;
+    border-width: 0 1px 1px 1px;*/
+}
+
+.chatLine {
+    font-family: 'Courier New';
+    color: blue;
+}
+
+.message {
+    color: black;
+    margin-left: 10px;
+}
+
+.livestamp {
+    font-family: Garamond;
+    font-style: italic;
+    font-size: 0.75em;
+    color: gray;
+    width: 150px;
+    margin-left: 100px;
+    display: inline-block;
+    text-align: right;
+}
+
+form input[type=text] {
+    margin-left: 125px;
+    width: 840px;
+    font-size: 12px;
+    padding: 5px;
+    font-family: Courier new;
+    font-size: 1.5em;
+    font-weight: 100;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: white;
+    background: #EFEFEF;
+    color: #0DAAFF;
+}
+
+.chatLine a {
+    font-family: Courier New;
+    font-weight: 600;
+    color: white;
+    padding: 2px;
+    background-color: black;
+    margin: 2px;
+    display: inline-block;
+}
+
+.chat {
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: #eee;
+}
+
+.chat .username {
+    font-weight: 800;
+}
+
+.chat:hover {
+    background-color: #ddd;
+}
+
+.spinner {
+    float: right;
+    height: 46px;
+    margin-bottom: 5px;
+}
+
+.spinner img {
+    padding: 10px;
+}

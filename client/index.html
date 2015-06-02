@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>chatterbox</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <!-- dependencies -->
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+    <script src="../lib/moment.js"></script>
+    <script src="../lib/livestamp.js"></script>
+    <!-- your scripts -->
+    <script src="env/config.js"></script>
+    <script src="scripts/app.js"></script>
+    <div class="corner">
+        <h1 id="trademark">chatterbox</h1>
+    </div>
+    <form class="settings">
+        <div>
+            <input type='text' class="textarea" id="enterMessage" placeholder="message">
+            <input type='text' class="textarea" id="enterName" placeholder="name">
+            <input type='text' class="textarea" id="enterRoom" placeholder="room">
+        </div>
+    </form>
+</head>
+
+<body>
+    <div class="buttondiv">
+        <button id='send' class='submit'> chatter </button>
+        <button class='refresh'> refresh </button>
+    </div>
+    </div>
+    <div class="feed"></div>
+    <div class="lists">
+        <h4>Friends</h4>
+        <span class="friendslist"></span>
+        <h4>Rooms</h4>
+        <span class="roomlist"></span>
+</body>
+
+</html>
