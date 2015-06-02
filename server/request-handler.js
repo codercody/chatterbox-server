@@ -11,23 +11,13 @@ this file and include it in basic-server.js so that it actually works.
 *Hint* Check out the node module documentation at http://nodejs.org/api/modules.html.
 
 **************************************************************/
-
+var messageArray = [];
 // module.exports.handleRequest = requestHandler;
 
 var requestHandler = function(request, response) {
   // Request and Response come from node's http module.
 
   console.log("start");
-  // console.log(request.text);
-
-  // var postedMessage = [];
-  // if (request.method === "POST") {
-  //   var requestBody = '';
-  //   request.on('end', function(data) {
-  //     response.writeHead(201);
-  //     response.end();
-  //   })
-  // };
 
   // They include information about both the incoming request, such as
   // headers and URL, and about the outgoing response, such as its status
@@ -57,7 +47,7 @@ var requestHandler = function(request, response) {
   // .writeHead() writes to the request line and headers of the response,
   // which includes the status and all headers.
 
-  response.url = 'classes/messages/'
+  response.url = 'classes/messages/';
 
   var statusCode = 200;
   // Make sure to always call response.end() - Node may not send
@@ -70,44 +60,46 @@ var requestHandler = function(request, response) {
   };
 
   if (request.method === "GET") {
-    request.on('data', function(chunk) {
-      console.log('BODY: ' + chunk);
-      returnObject[results].push(chunk);
-    });
+    // request.on('data', function(chunk) {
+    //   console.log('GETBODY: ' + chunk);
+    //   returnObject[results].push(chunk);
+    // });
+
+    if (request.url = "classes/messages/") {
+      console.log("GETTING", messageArray);
+      var stringifiedArray = JSON.stringify(messageArray);
+      returnObject.results = messageArray;
+    } else {
+      console.log("40404040404040s")
+      statusCode = 404;
+      response.writeHead(statusCode, headers);
+      response.end();
+
+    }
+
   } else if (request.method === "POST") {
     console.log("POST");
     statusCode = 201;
     var requestBody = '';
+    var newMessage = '';
+    request.on('data', function(chunk) {
+      console.log('BODY: ' + chunk);
+      newMessage += chunk;
+      console.log(newMessage);
+    });
+    request.on('end', function() {
+      newMessage = JSON.parse(newMessage);
+      console.log("NEW MESSAGE:", newMessage.username)
+      messageArray.push(newMessage);
+    });
 
-    switch (request.url) {
-      case '/':
-        console.log("POST /");
-        break;
-      case '/send':
-        console.log("POST /send");
-        break;
-      case '/classes/messages':
-        console.log("POST cm");
-        break;
-      default:
-        console.log("POST 404");
-        statusCode = 404;
-        response.end();
-    }
+    console.log("message:" + newMessage);
+    console.log(messageArray);
 
-    // if (request.url === "/classes/messages") {
-
-    // request.on('data', function(data) {
-    //   requestBody += data;
-    // });
-    // returnObject[results].push(requestBody);
-    // } else {
-    //   statusCode = 404;
-    //   response.end();
-    // }
   };
 
   response.writeHead(statusCode, headers);
+
   //
   // Calling .end "flushes" the response's internal buffer, forcing
   // node to actually send all the data over to the client.
