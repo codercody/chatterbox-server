@@ -14,7 +14,7 @@ this file and include it in basic-server.js so that it actually works.
 var messageArray = [];
 // module.exports.handleRequest = requestHandler;
 
-var requestHandler = function(request, response) {
+module.exports = function(request, response) {
   // Request and Response come from node's http module.
 
   console.log("start");
@@ -60,21 +60,15 @@ var requestHandler = function(request, response) {
   };
 
   if (request.method === "GET") {
-    // request.on('data', function(chunk) {
-    //   console.log('GETBODY: ' + chunk);
-    //   returnObject[results].push(chunk);
-    // });
-
-    if (request.url = "classes/messages/") {
-      console.log("GETTING", messageArray);
+    console.log("URL:", request.url);
+    if (request.url === "/classes/messages" || request.url === "/classes/room1") {
       var stringifiedArray = JSON.stringify(messageArray);
       returnObject.results = messageArray;
     } else {
-      console.log("40404040404040s")
       statusCode = 404;
       response.writeHead(statusCode, headers);
+      // console.log(request);
       response.end();
-
     }
 
   } else if (request.method === "POST") {
@@ -83,26 +77,33 @@ var requestHandler = function(request, response) {
     var requestBody = '';
     var newMessage = '';
     request.on('data', function(chunk) {
-      console.log('BODY: ' + chunk);
       newMessage += chunk;
-      console.log(newMessage);
     });
     request.on('end', function() {
       newMessage = JSON.parse(newMessage);
-      console.log("NEW MESSAGE:", newMessage.username)
       messageArray.push(newMessage);
     });
+  } else if (request.method === "OPTIONS") {
+    console.log("options received");
 
-    console.log("message:" + newMessage);
-    console.log(messageArray);
+    // headers["Allow"] = "GET, POST, PUT, DELETE, OPTIONS";
+    // var test = JSON.parse(request);
+    // for (key in request) {
+    //   console.log(key);
+    // }
+    // console.log(request.client);
 
-  };
+    response.writeHead(statusCode, headers);
+    response.end(JSON.stringify(returnObject)); //
+
+  }
 
   response.writeHead(statusCode, headers);
 
   //
   // Calling .end "flushes" the response's internal buffer, forcing
   // node to actually send all the data over to the client.
+
   response.end(JSON.stringify(returnObject));
 };
 
@@ -121,5 +122,3 @@ var defaultCorsHeaders = {
   "access-control-allow-headers": "content-type, accept",
   "access-control-max-age": 10 // Seconds.
 };
-
-module.exports.handleRequest = requestHandler;
